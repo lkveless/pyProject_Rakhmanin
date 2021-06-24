@@ -24,9 +24,9 @@ async def get_all_news(message: types.Message):
 
     for k, v in sorted(news_dict.items()):
 
-        news =f"<b>{(v['section_title'])}</b>\n" \
+        news =f"<b>{(v['section_title'])}</b>\n\n" \
                 f"{(v['section_url'])}\n" \
-                f"{v['section_desc']}"
+
 
         await message.answer(news)
 
@@ -37,9 +37,9 @@ async def get_last_five_news(message: types.Message):
         news_dict = json.load(file)
 
     for k, v in sorted(news_dict.items())[-5:]:
-        news = f"<b>{(v['section_title'])}</b>\n" \
+        news = f"<b>{(v['section_title'])}</b>\n\n" \
                f"{(v['section_url'])}\n" \
-               f"{v['section_desc']}"
+
 
         await message.answer(news)
 
@@ -50,9 +50,9 @@ async def get_fresh_news(message: types.Message):
 
     if len(fresh_news) >= 1:
         for k, v in sorted(fresh_news.items()):
-            news = f"<b>{(v['section_title'])}</b>\n" \
+            news = f"<b>{(v['section_title'])}</b>\n\n" \
                    f"{(v['section_url'])}\n" \
-                   f"{v['section_desc']}"
+
 
             await message.answer(news)
 

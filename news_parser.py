@@ -17,7 +17,6 @@ def get_first_news():
     news_dict = {}
     for section in section_name:
         section_title = section.find("h2", class_="post__title").text.strip()
-        section_desc = section.find("div", class_="post__text").text.strip()
         section_url_id = section.find('a', class_="post__title_link")
         url_id = section_url_id['href']
         section_url = f'{url_id}'
@@ -29,7 +28,7 @@ def get_first_news():
 
             "section_title": section_title,
             "section_url": section_url,
-            "section_desc": section_desc
+
         }
 
         with open("news_dict.json", "w") as file:
@@ -63,20 +62,17 @@ def check_news_update():
             continue
         else:
             section_title = section.find("h2", class_="post__title").text.strip()
-            section_desc = section.find("div", class_="post__text").text.strip()
 
             news_dict[section_id] = {
 
                 "section_title": section_title,
                 "section_url": section_url,
-                "section_desc": section_desc
             }
 
             fresh_news[section_id] = {
 
                 "section_title": section_title,
                 "section_url": section_url,
-                "section_desc": section_desc
             }
 
     with open("news_dict.json", "w") as file:
